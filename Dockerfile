@@ -1,14 +1,14 @@
-# Use the official Tomcat image from Docker Hub
-FROM tomcat:9.0.50-jdk11-adoptopenjdk-hotspot
+# Use the official OpenJDK 11 image from Docker Hub
+FROM openjdk:11-jre-slim
 
-# Remove the default ROOT application
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy your WAR file to the Tomcat webapps directory and rename it to ROOT.war
-COPY target/hotel-management-1.0-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+# Copy the packaged Spring Boot application JAR file into the container
+COPY target/hotel-management-1.0.0.jar /app/app.jar
 
-# Expose port 8080 (default Tomcat port)
+# Expose port 8080 to the outside world
 EXPOSE 8080
 
-# Start Tomcat
-CMD ["catalina.sh", "run"]
+# Command to run the Spring Boot application when the container starts
+CMD ["java", "-jar", "app.jar"]

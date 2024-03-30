@@ -1,15 +1,40 @@
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package com.example.hotel.model;
 
-@Entity
 public class Room {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String number;
     private String type;
+    private double price;
+    private String imageUrl; // Add this field for image URL
 
-    // Constructor, getters, setters
+    // Constructors, getters, and setters
+    // Constructor
+    public Room(String type, double price, String imageUrl) {
+        this.type = type;
+        this.price = price;
+        this.imageUrl = imageUrl;
+    }
+
+    // Getters and setters
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

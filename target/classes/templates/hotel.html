@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Hotel</title>
+</head>
+<body>
+    <h1 th:text="${hotel.name}"></h1>
+    <p th:text="${hotel.address}"></p>
+
+    <h2>Rooms:</h2>
+    <div th:each="room : ${hotel.rooms}">
+        <div>
+            <h3 th:text="${room.type}"></h3>
+            <p th:text="'Price: $' + ${room.price}"></p>
+            <img th:src="@{${room.imageUrl}}" style="width: 200px; height: 150px;" alt="Room Image">
+        </div>
+    </div>
+</body>
+</html>

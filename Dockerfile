@@ -1,14 +1,11 @@
-# Use the official OpenJDK 11 image from Docker Hub
-FROM openjdk:11-jre-slim
+FROM maven:3.8.4-openjdk-11-slim AS build
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the packaged Spring Boot application JAR file into the container
-COPY target/hotel-management-1.0.0.jar /app/app.jar
+COPY pom.xml .
 
-# Expose port 8080 to the outside world
+COPY src/ /app/src/
+
 EXPOSE 8080
 
-# Command to run the Spring Boot application when the container starts
-CMD ["java", "-jar", "app.jar"]
+CMD ["mvn", "spring-boot:run"]

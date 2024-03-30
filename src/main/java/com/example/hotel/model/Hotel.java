@@ -1,5 +1,6 @@
 package com.example.hotel.model;
 
+
 import java.util.List;
 
 public class Hotel {
